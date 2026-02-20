@@ -1,16 +1,16 @@
 import { useCallback, useState } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 
-import './App.css'
-import ChannelsPage  from './pages/ChannelsPage/ChannelsPage';
-import ProgramsPage  from './pages/ProgramsPage/ProgramsPage';
-import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
-import ChannelsPageId from './pages/ChannelsPage/ChannelPageId'
-import ProgramPageId from './pages/ProgramsPage/ProgramPageId';
+import "./App.css";
+import ChannelsPage from "./pages/ChannelsPage/ChannelsPage";
+import ProgramsPage from "./pages/ProgramsPage/ProgramsPage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import ChannelsPageId from "./pages/ChannelsPage/ChannelPageId";
+import ProgramPageId from "./pages/ProgramsPage/ProgramPageId";
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import PersistentPlayer from './components/PersistantPlayer/PersistantPlayer';
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import PersistentPlayer from "./components/PersistantPlayer/PersistantPlayer";
 
 export const BASE_URL = "https://api.sr.se/api/v2";
 
@@ -55,12 +55,15 @@ function AppLayout({
   );
 }
 
+
 export default function App() {
+  // radio player
   const [currentStream, setCurrentStream] = useState(null);
   const [channelQueue, setChannelQueue] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.8);
+
 
   const handleSetChannelQueue = useCallback(
     (channels) => {
@@ -80,7 +83,9 @@ export default function App() {
       const stream = mapChannelToStream(channel);
       if (!stream.url) return;
 
-      const existingIndex = channelQueue.findIndex((item) => item.id === stream.id);
+      const existingIndex = channelQueue.findIndex(
+        (item) => item.id === stream.id,
+      );
 
       if (existingIndex === -1) {
         setChannelQueue((prev) => [...prev, stream]);
@@ -121,7 +126,9 @@ export default function App() {
             onTogglePlay={() => setIsPlaying((prev) => !prev)}
             onNext={handleNext}
             onPrevious={handlePrevious}
-            canNext={currentIndex >= 0 && currentIndex < channelQueue.length - 1}
+            canNext={
+              currentIndex >= 0 && currentIndex < channelQueue.length - 1
+            }
             canPrevious={currentIndex > 0}
             volume={volume}
             onVolumeChange={setVolume}

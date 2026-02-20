@@ -2,8 +2,8 @@
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #111827;
-  background-color: #f3f4f6;
+  color: #0f172a;
+  background: radial-gradient(circle at 10% 10%, #e0f2fe 0%, #f8fafc 40%, #eef2ff 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,18 +18,20 @@ body {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
   padding: 0.4em 0.8em;
   font-size: 0.95em;
   font-weight: 600;
   font-family: inherit;
   background-color: #fff;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.12s, box-shadow 0.2s;
 }
 button:hover {
-  border-color: #0a5dd8;
+  border-color: #2563eb;
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.18);
+  transform: translateY(-1px);
 }
 button:focus,
 button:focus-visible {

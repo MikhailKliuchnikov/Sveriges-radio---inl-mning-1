@@ -2,9 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid #ddd;
-  background: #fff;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid #dbeafe;
+  background: linear-gradient(90deg, #ffffff 0%, #f0f9ff 100%);
+  box-shadow: 0 4px 14px rgba(14, 116, 144, 0.08);
 }
 
 .top-nav {
@@ -13,25 +14,28 @@
 }
 
 .top-nav a {
-  color: #1f2937;
+  color: #1e3a8a;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
 }
 
 .top-nav a.active {
-  color: #0a5dd8;
+  color: #0f172a;
+  background: #bfdbfe;
 }
 
 .app-main {
   min-height: calc(100vh - 180px);
-  padding: 1rem;
+  padding: 1.2rem;
   padding-bottom: 130px;
 }
 
 .split-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .left-panel {
@@ -40,18 +44,20 @@
   align-self: start;
   max-height: calc(100vh - 220px);
   overflow: auto;
-  padding: 0.8rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background: #fafafa;
+  padding: 1rem;
+  border: 1px solid #c7d2fe;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 12px 26px rgba(30, 64, 175, 0.08);
 }
 
 .detail-panel {
   min-height: 380px;
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  padding: 1.2rem;
+  border: 1px solid #c7d2fe;
+  border-radius: 14px;
   background: #fff;
+  box-shadow: 0 12px 26px rgba(30, 64, 175, 0.08);
 }
 
 .item-list {
@@ -64,11 +70,19 @@
   display: flex;
   gap: 0.6rem;
   align-items: center;
-  padding: 0.45rem 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e7ff;
 }
 
 .item-row a {
-  color: #0a5dd8;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.favorite-btn.active {
+  border-color: #d97706;
+  background: #fef3c7;
+  color: #92400e;
 }
 
 .pagination {
@@ -84,9 +98,10 @@
   right: 0;
   bottom: 0;
   z-index: 30;
-  border-top: 1px solid #ddd;
-  background: #ffffff;
-  padding: 0.8rem 1rem;
+  border-top: 1px solid #bfdbfe;
+  background: linear-gradient(90deg, #ffffff 0%, #eff6ff 100%);
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 -8px 22px rgba(37, 99, 235, 0.14);
 }
 
 .persistent-player h3,

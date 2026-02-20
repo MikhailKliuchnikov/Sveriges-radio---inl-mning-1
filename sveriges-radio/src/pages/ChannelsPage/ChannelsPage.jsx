@@ -8,6 +8,13 @@ export default function ChannelsPage({ onPlayChannel, onSetChannelQueue }) {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [favoriteChannelIds, setFavoriteChannelIds] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favoriteChannelIds") ?? "[]");
+    } catch {
+      return [];
+    }
+  });
   const size = 20;
 
   useEffect(() => {
@@ -33,6 +40,16 @@ export default function ChannelsPage({ onPlayChannel, onSetChannelQueue }) {
     onSetChannelQueue(playableChannels);
   }, [onSetChannelQueue, playableChannels]);
 
+  useEffect(() => {
+    localStorage.setItem("favoriteChannelIds", JSON.stringify(favoriteChannelIds));
+  }, [favoriteChannelIds]);
+
+  const toggleFavoriteChannel = (id) => {
+    setFavoriteChannelIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
+
   if (error) return <p>Error: {error}</p>;
   if (isLoading && !data) return <p>Laddar...</p>;
 
@@ -51,6 +68,12 @@ export default function ChannelsPage({ onPlayChannel, onSetChannelQueue }) {
                 disabled={!post.liveaudio?.url}
               >
                 Play
+              </button>
+              <button
+                className={favoriteChannelIds.includes(post.id) ? "favorite-btn active" : "favorite-btn"}
+                onClick={() => toggleFavoriteChannel(post.id)}
+              >
+                {favoriteChannelIds.includes(post.id) ? "Favorited" : "Favorite"}
               </button>
               <Link to={`/channels/${post.id}`}>{post.name}</Link>
             </li>

@@ -8,6 +8,13 @@ export default function ProgramsPage() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [favoriteProgramIds, setFavoriteProgramIds] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favoriteProgramIds") ?? "[]");
+    } catch {
+      return [];
+    }
+  });
   const size = 20;
 
   useEffect(() => {
@@ -23,6 +30,16 @@ export default function ProgramsPage() {
       .finally(() => setIsLoading(false));
   }, [page]);
 
+  useEffect(() => {
+    localStorage.setItem("favoriteProgramIds", JSON.stringify(favoriteProgramIds));
+  }, [favoriteProgramIds]);
+
+  const toggleFavoriteProgram = (id) => {
+    setFavoriteProgramIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
+
   if (error) return <p>Error: {error}</p>;
   if (isLoading && !data) return <p>Laddar...</p>;
 
@@ -37,6 +54,12 @@ export default function ProgramsPage() {
         <ul className="item-list">
           {programs.map((post) => (
             <li key={post.id} className="item-row">
+              <button
+                className={favoriteProgramIds.includes(post.id) ? "favorite-btn active" : "favorite-btn"}
+                onClick={() => toggleFavoriteProgram(post.id)}
+              >
+                {favoriteProgramIds.includes(post.id) ? "Favorited" : "Favorite"}
+              </button>
               <Link to={`/programs/${post.id}`}>{post.name}</Link>
             </li>
           ))}

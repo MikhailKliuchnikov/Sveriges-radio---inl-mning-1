@@ -1,16 +1,13 @@
-# React + Vite
+# Sveriges Radio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Frontend Developer, Modul 4, Academy Online Inlämningsuppgift 1
 
-Currently, two official plugins are available:
+The first actually working app made with React.
+The App.jsx saves current player data and calls on link routes, while
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```jsx
+<Outlet/>
+```
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Is the only part of the app that dynamcally changes content, allowing radio to play despite any navigation, fetching and searching.
+I really tried to implement a proper schedule for programs, but something just continues to happen weirdly so I will just keep it as it is.
