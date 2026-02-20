@@ -2,10 +2,18 @@ import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
-    <nav>
-      <NavLink to="/">Channels</NavLink>
-      <NavLink to="/programs">Programs</NavLink>
-      <NavLink to="/favorites">Favorites</NavLink>
-    </nav>
+    <header className="app-header">
+      <nav className="top-nav">
+        <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+          Channels
+        </NavLink>
+        <NavLink to="/programs" className={({ isActive }) => (isActive ? "active" : "")}>
+          Programs
+        </NavLink>
+        <NavLink to="/favorites" className={({ isActive }) => (isActive ? "active" : "")}>
+          Favorites
+        </NavLink>
+      </nav>
+    </header>
   );
 }

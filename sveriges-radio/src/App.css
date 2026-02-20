@@ -1,42 +1,112 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.top-nav {
+  display: flex;
+  gap: 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.top-nav a {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.top-nav a.active {
+  color: #0a5dd8;
+}
+
+.app-main {
+  min-height: calc(100vh - 180px);
+  padding: 1rem;
+  padding-bottom: 130px;
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1rem;
+}
+
+.left-panel {
+  position: sticky;
+  top: 72px;
+  align-self: start;
+  max-height: calc(100vh - 220px);
+  overflow: auto;
+  padding: 0.8rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.detail-panel {
+  min-height: 380px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.45rem 0;
+}
+
+.item-row a {
+  color: #0a5dd8;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.persistent-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  border-top: 1px solid #ddd;
+  background: #ffffff;
+  padding: 0.8rem 1rem;
+}
+
+.persistent-player h3,
+.persistent-player p {
+  margin: 0.3rem 0;
+}
+
+.persistent-player > div {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.4rem 0;
+}
+
+@media (max-width: 900px) {
+  .split-layout {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .left-panel {
+    position: static;
+    max-height: none;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

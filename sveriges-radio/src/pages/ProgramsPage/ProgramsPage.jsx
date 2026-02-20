@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../App";
 import { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import axios from "axios";
 
 export default function ProgramsPage() {
@@ -30,23 +31,29 @@ export default function ProgramsPage() {
   const hasNextPage = Boolean(data?.pagination?.nextpage);
 
   return (
-    <>
-      <ul>
-        {programs.map((post) => (
-          <li key={post.id}>
-            <p>Program name: {post.name}</p>
-          </li>
-        ))}
-      </ul>
-      <div>
-        <button onClick={() => setPage((prev) => prev - 1)} disabled={!hasPrevPage || isLoading}>
-          Prev
-        </button>
-        <span> Page {page} </span>
-        <button onClick={() => setPage((prev) => prev + 1)} disabled={!hasNextPage || isLoading}>
-          Next
-        </button>
-      </div>
-    </>
+    <section className="split-layout">
+      <aside className="left-panel">
+        <h2>Programs</h2>
+        <ul className="item-list">
+          {programs.map((post) => (
+            <li key={post.id} className="item-row">
+              <Link to={`/programs/${post.id}`}>{post.name}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className="pagination">
+          <button onClick={() => setPage((prev) => prev - 1)} disabled={!hasPrevPage || isLoading}>
+            Prev
+          </button>
+          <span> Page {page} </span>
+          <button onClick={() => setPage((prev) => prev + 1)} disabled={!hasNextPage || isLoading}>
+            Next
+          </button>
+        </div>
+      </aside>
+      <section className="detail-panel">
+        <Outlet />
+      </section>
+    </section>
   );
 }
